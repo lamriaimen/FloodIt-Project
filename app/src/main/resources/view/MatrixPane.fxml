@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import view.MatrixPane?>
+<?import java.lang.Double?>
+<?import java.lang.Integer?>
+<AnchorPane stylesheets="@DarkTheme.css"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.GameController">
+        <HBox styleClass="menu-bar" prefWidth="610" maxWidth="Infinity">
+                <MenuBar minHeight="40.">
+                        <Menu mnemonicParsing="false" text="Grid">
+                                <MenuItem mnemonicParsing="false" onAction="#fillGridUniform" text="Uniform">
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#fillGridRandom" text="Random">
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#fillGridDistinct" text="Distinct">
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#fillGridCycle" text="Cycle">
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#fillGridUniformExceptOne"
+                                          text="Except one">
+                                </MenuItem>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Player">
+                                <fx:define>
+                                        <ToggleGroup fx:id="togglePlayerOne"/>
+                                </fx:define>
+                                <RadioMenuItem text="human" onAction="#setPlayerHuman" selected="true"
+                                               toggleGroup="$togglePlayerOne"></RadioMenuItem>
+                                <RadioMenuItem text="robin" onAction="#setPlayerRobin"
+                                               toggleGroup="$togglePlayerOne"></RadioMenuItem>
+                                <RadioMenuItem text="random" onAction="#setPlayerRandom"
+                                               toggleGroup="$togglePlayerOne"></RadioMenuItem>
+                                <RadioMenuItem text="random walk" onAction="#setPlayerRandomWalk"
+                                               toggleGroup="$togglePlayerOne"></RadioMenuItem>
+                                <RadioMenuItem text="greedy" onAction="#setPlayerGreedy"
+                                               toggleGroup="$togglePlayerOne"></RadioMenuItem>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Game">
+                                <MenuItem text="start" onAction="#startGame"></MenuItem>
+                        </Menu>
+                </MenuBar>
+                <HBox  alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                        <children>
+                                <Label contentDisplay="TEXT_ONLY" text="score: "
+                                       maxHeight="-Infinity" maxWidth="+Infinity" prefHeight="24.0" prefWidth="60.0"/>
+                                <Label fx:id="scoreLabel"  contentDisplay="TEXT_ONLY"
+                                       maxHeight="-Infinity" maxWidth="+Infinity" prefHeight="24.0" prefWidth="150"/>
+                                <Label contentDisplay="TEXT_ONLY" text="turn: "
+                                       maxHeight="-Infinity" maxWidth="+Infinity" prefHeight="24.0" prefWidth="60.0"/>
+                                <Label fx:id="tourLabel"  contentDisplay="TEXT_ONLY"
+                                       maxHeight="-Infinity" maxWidth="+Infinity" prefHeight="24.0" prefWidth="80.0"/>
+                        </children>
+                </HBox>
+        </HBox>
+        <MatrixPane AnchorPane.topAnchor="40."
+                    xmlns="http://javafx.com/javafx"
+                    xmlns:fx="http://javafx.com/fxml"
+                    fx:id="matrixPane">
+                <tileWidth>
+                        <Double fx:value="60"/>
+                </tileWidth>
+                <tileHeight>
+                        <Double fx:value="60"/>
+                </tileHeight>
+                <numberOfColumns>
+                        <Integer fx:value="10"/>
+                </numberOfColumns>
+                <numberOfRows>
+                        <Integer fx:value="10"/>
+                </numberOfRows>
+        </MatrixPane>
+</AnchorPane>
